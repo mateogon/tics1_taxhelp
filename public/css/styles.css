@@ -1,0 +1,53 @@
+#override body{
+  background-image: url('public/images/bg1.jpg');
+  backdrop-filter: blur(3px);
+}
+
+body#bg-img{
+  background-image: url('public/images/bg1.jpg');
+  backdrop-filter: blur(2px);
+}
+#bootstrap-overrides div{
+  width: 30%;
+  border-radius: 20px;
+}
+[id=outline]{
+  border-style: solid; 
+  border-color: rgb(30,139,236);
+  border-width: 1px;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  margin: auto;
+}
+.form-signin .checkbox {
+  font-weight: 400;
+}
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.top {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.middle {
+  margin-bottom: -1px;
+  margin-top: -1px;
+  border-radius: 0;
+}
+.bottom {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

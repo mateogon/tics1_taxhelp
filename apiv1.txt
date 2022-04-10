@@ -1,0 +1,61 @@
+Posts:
+
+- POST /posts/new
+    -Crea un nuevo post
+    -Requiere estar logueado
+    Parametros:
+        post: texto del post
+        
+- GET /posts/like/:id
+    -Da like a un post con id ':id'
+    -Si el usuario le habia dado dislike, se elimina y queda el like.
+    -Requiere estar logueado
+
+- GET /posts/dislike/:id
+    -Da dislike a un post con id ':id'
+    -Si el usuario le habia dado like, se elimina y queda el dislike.
+    -Requiere estar logueado
+
+- GET /posts/:id
+    -Obtiene los datos de un post con id ':id'
+
+- GET /posts
+    -Obtiene un listado de todos los posts
+
+Users:
+
+- POST /user/new
+    -Crea un nuevo usuario
+    Parametros:
+        email : email de la cuenta
+        password : contraseña
+        firstName : nombre
+        lastName :  apellido/s
+
+- POST /user/login
+    -Inicia sesion con una usuario
+    Parametros:
+        email
+        password
+
+- GET /user/logout
+    -Cierra sesion al usuario conectado
+    -Requiere estar logueado
+    
+
+- GET /user/:id
+    -Entrega informacion del usuario con id ':id'
+
+Comments:
+
+- GET /posts/comments/:id
+    -Obtiene todos los comentarios del post con id ':id'
+
+- POST /post/comments/add/:id
+    -Agrega un comentario al post con id ':id'
+    -Requiere estar logueado
+    Parametros:
+        message : texto del comentario
+
+
+
