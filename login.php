@@ -16,7 +16,7 @@ include_once "views/header.php";
             <input id = "inputPassword" type="password" name="password" class="form-control bottom" placeholder="Password" required>
             </div>
             <?php
-			if (isset($_SESSION['error'])){
+			if (isset($_GET['error'])){
             if($_GET['error'] == "2"){
               echo "
               <div class='d-grid gap-2 d-sm-flex justify-content-sm-center'>

@@ -39,9 +39,16 @@ if (!isset($_SESSION['user'])){
               <li class="nav-item">
                   <a class="nav-link" href="/html/posts.php">Home</a>
               </li>
+			  <li class="nav-item">
+                  <a class="nav-link" href="/html/cotizar.php">Cotizar</a>
+              </li>
+			  <li class="nav-item">
+                  <a class="nav-link" href="/html/cotizaciones.php">Cotizaciones</a>
+              </li>
               <li class="nav-item">
                   <a class="nav-link" href="/html/profile.php">Profile</a>
               </li>
+			  
               <li class="nav-item">
                   <a class="nav-link" href="/html/logout.php">Log out</a>
               </li>
