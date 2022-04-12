@@ -309,7 +309,7 @@ if (isset($_GET['id'])){
 				
 				</div>
 				<div id ="calculo" class="col d-flex justify-content-center" style="visibility: hidden">
-				  <div class="card text-white bg-primary mb-3 mt-3" style="max-width: 30rem;">
+				  <div id = "card-resultado" class="card text-white bg-primary mb-3 mt-3" style="max-width: 30rem;">
 					  <div class="card-header">Resultado</div>
 					  <div class="card-body">
 						<h5 id ="titulo" class="card-title"></h5>
@@ -375,32 +375,60 @@ function calcular(){
 	for (var i = 0; i<tramos.length; i++){
 		if (base_global <= tramos[i]){
 			tramo = i;
+			console.log("tramo: "+i);
 			break;
 		} 
 	}
 	var rebaja = 0;
 	if (tramo != 0){
 		rebaja = (tramos[tramo-1]+0.01)*factores[i];
+		console.log("rebaja: "+rebaja);
 	}
 	//cambiar texto carta
 	var a_pagar = Math.round(base_global*factores[i] - rebaja);
+	console.log("a pagar: "+a_pagar);
 	//hacer visible la carta azul con resultados
 	var titulo = "";
 	var texto = "";
-	if (a_pagar >= 0) {
+	if ( tramo != 0){
+		if (a_pagar >= 0) {
 		titulo = "Paga Impuestos"
 		texto = "Debera pagar un total de : "+a_pagar+ " pesos."
+		if ($('#card-resultado')[0].classList.contains("bg-primary")){
+			$('#card-resultado')[0].classList.remove("bg-primary");
+		}
+		if (!$('#card-resultado')[0].classList.contains("bg-danger")){
+			$('#card-resultado')[0].classList.add("bg-danger");
+		}
 	}else{
 		titulo = "Recibe Devolucion"
 		texto = "Recibira devolucion de : "+(-1*a_pagar)+ " pesos."
+		if ($('#card-resultado')[0].classList.contains("bg-danger")){
+			$('#card-resultado')[0].classList.remove("bg-danger");
+		}
+		if (!$('#card-resultado')[0].classList.contains("bg-primary")){
+			$('#card-resultado')[0].classList.add("bg-primary");
+		}
 	}
+	}else{
+		titulo = "Recibe Devolucion"
+		texto = "Recibira devolucion de : "+Math.round(sum_sueldos*0.1)+ " pesos."
+		if ($('#card-resultado')[0].classList.contains("bg-danger")){
+			$('#card-resultado')[0].classList.remove("bg-danger");
+		}
+		if (!$('#card-resultado')[0].classList.contains("bg-primary")){
+			$('#card-resultado')[0].classList.add("bg-primary");
+		}
+	}
+	
 	$('#titulo')[0].innerText = titulo;
 	$('#texto')[0].innerText = texto;
+	
 	if ($('#calculo')[0].style.visibility != "visible"){
 		$('#calculo')[0].style.visibility = "visible";
 	}
-	console.log(sum_sueldos);
-	console.log(sum_honorarios);
+	//console.log(sum_sueldos);
+	//console.log(sum_honorarios);
 	
 	
 };

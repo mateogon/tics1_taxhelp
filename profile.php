@@ -27,7 +27,7 @@ if (isset($user->img)){
         <div class="container">
             <div class="card mb-5 mt-5">
                 <div class="card-header">
-                <h2 class="card-title mx-3">My Profile</h5>
+                <h2 class="card-title mx-3">Mi Perfil</h5>
                 </div>
                 <div class="card-body mx-4">
                     <div class="d-grid gap-2 d-flex justify-content-sm-left text-center">
@@ -40,14 +40,14 @@ if (isset($user->img)){
                          
                         alt="" width="200" height="200">
                             <form  class="form-group" action="/upload-image.php" method="post" enctype="multipart/form-data">   
-                                <label for="profilePicture">Change your profile picture:</label>
+                                <label for="profilePicture">Cambia tu foto de perfil:</label>
                                 <input class="form-control form-control-sm my-3" name= "profilePicture" id = "profilePicture" type="file" accept="image/png, image/jpeg">
                                 <button class="btn btn-md btn-primary btn-block mb-3" type="submit">Update</button>
                             </form>
                         </div>
                         <div class = "col-md-6">
                           <h3>
-                            <small class="text-muted w-100">Full Name: </small>
+                            <small class="text-muted w-100">Nombre completo: </small>
                             <?php echo($user->firstName . " " . $user->lastName);?>
                           </h3>
                           <h3>

@@ -43,7 +43,7 @@ if (!isset($_SESSION['user'])){
                   <a class="nav-link" href="/html/cotizaciones.php">Cotizaciones</a>
               </li>
               <li class="nav-item">
-                  <a class="nav-link" href="/html/profile.php">Profile</a>
+                  <a class="nav-link" href="/html/profile.php">Perfil</a>
               </li>
 			  
               <li class="nav-item">
