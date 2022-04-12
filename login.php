@@ -62,7 +62,7 @@ function login(){
         context: document.body
     }).done(function( data ){
       if (data.status){
-		location.href ="/html/posts.php";
+		location.href ="/html/cotizar.php";
       }else{
 		 console.log(data)
         location.href = "/html/login.php?error="+data.error_code.toString();

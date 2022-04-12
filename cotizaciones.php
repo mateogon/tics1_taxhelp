@@ -1,25 +1,15 @@
 <?php
 include_once "views/navbar-header.php";
 $target_dir = "uploads/profileimages/";
-
+$session_id = (string)$_SESSION['user']['_id']['$oid'];
 $client = new MongoDB\Client("mongodb://localhost:27017");
-$collection = $client->redsocial->usuarios;
-$user = $collection->findOne([
-'email' => $_SESSION['user']['email'],
-]);
-if (isset($user->img)){
-    $img = $target_dir . $user->img;
+    $collection = $client->redsocial->cotizaciones;
     
-}else{//problem with session
-    
-    /*
-    session_start();
-    session_destroy();
-    header('Location: index.php');
-    print_r("error fetching profile. Please log in again.");
-    */
-};
+    $cotizaciones = $collection->find([
+        'userid' => $session_id,
+        ]);
 
+	
 
 ?>
 
@@ -27,17 +17,27 @@ if (isset($user->img)){
         <div class="container">
             <div class="card mb-5 mt-5">
                 <div class="card-header">
-                <h2 class="card-title mx-3">Cotizaciones previas</h5>
+                <h2 class="card-title mx-3 my-3">Cotizaciones previas</h5>
                 </div>
                 <div class="card-body mx-4">
                     <div class="list-group">
-					  <a href="#" class="list-group-item list-group-item-action active">
-						Cras justo odio
-					  </a>
-					  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-					  <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-					  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-					  <a href="#" class="list-group-item list-group-item-action disabled">Vestibulum at eros</a>
+					<?php
+					foreach($cotizaciones as $cotizacion){
+						$nombre = $cotizacion['nombre'];
+						$id = $cotizacion['_id'];
+						echo '<div class="row">
+						<div class="col">';
+    
+    
+						echo '<a href="/html/cotizar.php?id='.$id.'" class="list-group-item list-group-item-action my-2 mx-2">'. $nombre.'</a>';
+						echo'</div>
+						<div class="col-md-auto">';
+    
+						echo '<a class ="float-end btn btn-md btn-link delete-post mt-2" href="delete_cotizacion.php?id='.$id.'"><i class="fas fa-trash-alt"></i></a>';
+						echo '</div>
+							</div>';
+					}
+					?>
 					</div>
                 </div>
             </div>

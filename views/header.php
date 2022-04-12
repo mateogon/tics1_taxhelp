@@ -2,7 +2,7 @@
 require 'vendor/autoload.php';
 session_start();//important
 if (isset($_SESSION['user'])){
-  header('Location: posts.php');
+  header('Location: cotizar.php');
 }
 ?>
 <!doctype html>

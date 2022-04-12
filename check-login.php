@@ -14,7 +14,7 @@ if (isset($user->email)){ //$user != null
         $json = MongoDB\BSON\toJSON(MongoDB\BSON\fromPHP($user));
         $_SESSION['user'] = json_decode($json, true);
         //print_r(json_decode($json, true)['_id']['$oid']);
-        header('Location: posts.php');
+        header('Location: cotizar.php');
         exit();
     } else{//wrong password
         header('Location: login.php?error=2');
