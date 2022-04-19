@@ -339,7 +339,7 @@ if (isset($_GET['id'])){
 <script>
 
 function calcular(){
-	
+	console.log("---------");
 	s = [];
 	h = [];
 	for (var i = 1; i<=12; i++){
@@ -361,7 +361,7 @@ function calcular(){
 	var max_gastos_presuntos = 9185220;
 	var tramos = [8266698,18370440,30617400,42864360,55111320,73481760,189827880,2147000000];
 	var factores = [0,0.04,0.08,0.135,0.23,0.304,0.35,0.4];
-	
+	var factor_honorarios = 0.1225;
 	var sum_sueldos = s.reduce((partialSum, a) => partialSum + a, 0);
 	var sum_honorarios = h.reduce((partialSum, a) => partialSum + a, 0);
 	
@@ -371,6 +371,7 @@ function calcular(){
 	}
 	
 	var base_global = sum_sueldos + sum_honorarios - gastos_presuntos;
+	console.log("base global: "+base_global);
 	var tramo;
 	for (var i = 0; i<tramos.length; i++){
 		if (base_global <= tramos[i]){
@@ -412,7 +413,7 @@ function calcular(){
 	}
 	}else{
 		titulo = "Recibe Devolucion"
-		texto = "Recibira devolucion de : "+Math.round(sum_sueldos*0.1)+ " pesos."
+		texto = "Recibira devolucion de : "+Math.round((sum_sueldos*0.1) +(sum_honorarios*factor_honorarios))+ " pesos."
 		if ($('#card-resultado')[0].classList.contains("bg-danger")){
 			$('#card-resultado')[0].classList.remove("bg-danger");
 		}
