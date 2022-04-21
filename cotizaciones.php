@@ -17,7 +17,7 @@ $client = new MongoDB\Client("mongodb://localhost:27017");
         <div class="container">
             <div class="card mb-5 mt-5">
                 <div class="card-header">
-                <h2 class="card-title mx-3 my-3">Cotizaciones previas</h5>
+                <h2 class="card-title mx-3 my-3">Cotizaciones guardadas</h5>
                 </div>
                 <div class="card-body mx-4">
                     <div class="list-group">

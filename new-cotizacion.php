@@ -10,20 +10,20 @@
 	$honorarios = [];
     $name = $_POST["nombre"];
 	unset($_POST["nombre"]);
-	$index_s = "";
-	$index_h = "";
 	for ($x = 1; $x <= 12; $x++) {
-	  $index_s = "s_" . (string)$x;
-	  $index_h = "h_" . (string)$x;
-	  $sueldos[$x] = (int)$_POST[$index_s];
-	  $honorarios[$x] = (int)$_POST[$index_h];
+	  $sueldos[$x] = (int)$_POST["s_" . (string)$x];
+	  $honorarios[$x] = (int)$_POST["h_" . (string)$x];
+	  $ret_sueldos[$x] = (int)$_POST["rs_" . (string)$x];
+	  $ret_honorarios[$x] = (int)$_POST["rh_" . (string)$x];
 	}
     $data = [
     'userid' => (string)$_SESSION['user']['_id']['$oid'],
     'nombre' => $name,
     'datetime' => time(),
     'sueldos' => $sueldos,
-    'honorarios' => $honorarios
+    'honorarios' => $honorarios,
+	'retencion_sueldos' => $ret_sueldos,
+    'retencion_honorarios' => $ret_honorarios
     ];
 	$data['_id'] = new MongoDB\BSON\ObjectID();
     $insertOneResult = $collection->insertOne($data);
